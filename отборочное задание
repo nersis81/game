@@ -1,0 +1,48 @@
+
+const { createBrotliCompress } = require("zlib");
+
+require("@nomiclabs/hardhat-waffle");
+
+// This is a sample Hardhat task. To learn how to create your own go to
+// https://hardhat.org/guides/create-task.html
+task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
+  const accounts = await hre.ethers.getSigners();
+
+  for (const account of accounts) {
+    console.log(account.address);
+  }
+});
+
+// You need to export an object to set up your config
+// Go to https://hardhat.org/config/ to learn more
+
+/**
+ * @type import('hardhat/config').HardhatUserConfig
+ */
+module.exports = {
+  solidity: "0.8.4",
+};
+
+contract owned {
+"""действия боса контракта"""
+
+  adress public owner;
+
+  function owned() payble {
+    owner = msg.sender;
+  }  
+  """внести пожервование"""
+contract Donate is owned {
+  adress public owner;
+  function donate() public payble {
+    require(msg.value >= 1 ether);
+    owned.transfer(msg.value)
+  }
+ """вывод средств овнер"""
+ function withdraw() public onlyOwner { 
+    owner.transfer(this.balance);
+ }
+  """адреса жертвователей"""
+mapping(adress => uint256) donating;
+"""хранение сумм жертвов"""
+Storage[public balanceof]
