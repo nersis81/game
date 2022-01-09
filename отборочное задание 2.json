@@ -1,0 +1,26 @@
+pragma solidity^0.8.4
+contract Church{
+    address public priest;
+    addres[] public donators;
+    constructor () public {
+        priest = msg.sender;
+    }
+    function gatherDonation()public payble {
+        require(msg.value>= 0.001 ether);
+        donators.push(msg.sender);
+    }
+}        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
